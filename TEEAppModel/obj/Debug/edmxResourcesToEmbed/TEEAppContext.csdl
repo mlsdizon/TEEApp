@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TEEAppModel" Alias="Self" p1:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:p1="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityContainer Name="TEEAppContext" p1:LazyLoadingEnabled="true">
+    <EntitySet Name="Employees" EntityType="TEEAppModel.Employee" />
+    <EntitySet Name="ReminderDetails" EntityType="TEEAppModel.ReminderDetail" />
+    <AssociationSet Name="FK_ReminderDetails_Employee" Association="TEEAppModel.FK_ReminderDetails_Employee">
+      <End Role="Employee" EntitySet="Employees" />
+      <End Role="ReminderDetails" EntitySet="ReminderDetails" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Employee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <Property Name="LastName" Type="String" MaxLength="128" Unicode="false" FixedLength="false" />
+    <NavigationProperty Name="ReminderDetails" Relationship="TEEAppModel.FK_ReminderDetails_Employee" FromRole="Employee" ToRole="ReminderDetails" />
+  </EntityType>
+  <EntityType Name="ReminderDetail">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" p1:StoreGeneratedPattern="Identity" />
+    <Property Name="ReminderText" Type="String" Nullable="false" MaxLength="Max" Unicode="false" FixedLength="false" />
+    <Property Name="ReminderTime" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OwnerId" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Employee" Relationship="TEEAppModel.FK_ReminderDetails_Employee" FromRole="ReminderDetails" ToRole="Employee" />
+  </EntityType>
+  <Association Name="FK_ReminderDetails_Employee">
+    <End Role="Employee" Type="TEEAppModel.Employee" Multiplicity="1" />
+    <End Role="ReminderDetails" Type="TEEAppModel.ReminderDetail" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Employee">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="ReminderDetails">
+        <PropertyRef Name="OwnerId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
