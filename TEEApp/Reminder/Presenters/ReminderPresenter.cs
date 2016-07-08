@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using TEEApp.Base.Presenters;
 using TEEApp.Reminder.Interface;
 using TEEAppModel;
 
 namespace TEEApp.Reminder.Presenters
 {
-    public class ReminderPresenter
+    public class ReminderPresenter : Presenter
     {
         private readonly IReminderView view;
 
@@ -21,15 +22,25 @@ namespace TEEApp.Reminder.Presenters
             this.view.BindEmployee(this.context.Employees.ToList());
         }
 
-        public void AddReminder(int ownerId, string reminderText, DateTime reminderDate)
+        public void AddReminder()
         {
             ReminderDetail rDetails = new ReminderDetail();
-            rDetails.OwnerId = ownerId;
-            rDetails.ReminderText = reminderText;
-            rDetails.ReminderTime = reminderDate;
+            rDetails.OwnerId = this.view.OwnerId;
+            rDetails.ReminderText = this.view.ReminderText;
+            rDetails.ReminderTime = this.view.ReminderDate;
 
             this.context.ReminderDetails.Add(rDetails);
-            this.context.SaveChanges();
+            if (this.SaveChanges(this.context))
+            {
+                this.view.ShowInfoDialog("Reminder Successfully Added.", "Reminder");
+                this.view.OwnerId = -1;
+                this.view.ReminderText = String.Empty;
+                this.view.ReminderDate = DateTime.Now;
+            }
+            else
+            {
+                this.view.ShowErrorDialog("Failed to Add Reminder.");
+            }
         }
     }
 }

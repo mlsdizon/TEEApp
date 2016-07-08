@@ -88,20 +88,20 @@
             // 
             // dtpReminderMeOn
             // 
-            this.dtpReminderMeOn.CustomFormat = "dd/MM/yyyy hh:ss";
+            this.dtpReminderMeOn.CustomFormat = "dd/MM/yyyy hh:mm tt";
             this.dtpReminderMeOn.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dtpReminderMeOn.Location = new System.Drawing.Point(157, 324);
             this.dtpReminderMeOn.Name = "dtpReminderMeOn";
             this.dtpReminderMeOn.Size = new System.Drawing.Size(164, 21);
             this.dtpReminderMeOn.TabIndex = 3;
             this.dtpReminderMeOn.TabStop = false;
-            this.dtpReminderMeOn.Text = "28/06/2016 10:20";
+            this.dtpReminderMeOn.Text = "08/07/2016 12:00 AM";
             this.dtpReminderMeOn.ThemeName = "Office2013Dark";
-            this.dtpReminderMeOn.Value = new System.DateTime(2016, 6, 28, 10, 48, 20, 539);
+            this.dtpReminderMeOn.Value = new System.DateTime(2016, 7, 8, 0, 0, 0, 0);
             // 
             // btnAddReminder
             // 
-            this.btnAddReminder.Location = new System.Drawing.Point(359, 352);
+            this.btnAddReminder.Location = new System.Drawing.Point(359, 351);
             this.btnAddReminder.Name = "btnAddReminder";
             this.btnAddReminder.Size = new System.Drawing.Size(110, 24);
             this.btnAddReminder.TabIndex = 4;

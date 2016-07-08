@@ -22,6 +22,8 @@ namespace TEEApp.Reminder.Views
         {
             InitializeComponent();
             this.presenter = new ReminderPresenter(this);
+
+            this.ReminderDate = DateTime.Now;
         }
 
         public void BindEmployee(List<Employee> list)
@@ -44,6 +46,7 @@ namespace TEEApp.Reminder.Views
         public int OwnerId
         {
             get { return (int)this.ddlEmployee.SelectedValue; }
+            set { this.ddlEmployee.SelectedIndex = value; }
         }
 
         private void ddlEmployee_Validating(object sender, CancelEventArgs e)
@@ -61,7 +64,7 @@ namespace TEEApp.Reminder.Views
 
         private void btnAddReminder_Click(object sender, EventArgs e)
         {
-            this.presenter.AddReminder(this.OwnerId, this.ReminderText, this.ReminderDate);
+            this.presenter.AddReminder();
         }
     }
 }

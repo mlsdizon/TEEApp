@@ -66,12 +66,14 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Base\Presenters\Presenter.cs" />
     <Compile Include="Base\Views\BaseUserControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="Base\Views\BaseUserControl.Designer.cs">
       <DependentUpon>BaseUserControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Base\Views\IView.cs" />
     <Compile Include="Base\Views\MainView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -140,9 +142,7 @@
       <Name>TEEAppModel</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Base\Presenters\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
