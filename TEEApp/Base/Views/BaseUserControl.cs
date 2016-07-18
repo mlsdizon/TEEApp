@@ -9,11 +9,14 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Telerik.WinControls;
 using Telerik.WinControls.UI;
+using TEEApp.Base.Interface;
 
 namespace TEEApp.Base.Views
 {
     public partial class BaseUserControl : UserControl, IView
     {
+        private Cursor previousCursor = Cursors.Default;
+
         public BaseUserControl()
         {
             InitializeComponent();
@@ -30,6 +33,21 @@ namespace TEEApp.Base.Views
                     ddl.SelectedIndex = -1;
                 }
             }
+        }
+
+        public void WaitCursorOn()
+        {
+            this.previousCursor = Cursor.Current;
+            Cursor.Current = Cursors.WaitCursor;
+        }
+
+        /// <summary>
+        /// This doesn't necessarily turn the wait cursor off.
+        /// It turns the wait cursor back to the cursor that existed when WaitCursorOn() was called.
+        /// </summary>
+        public void WaitCursorOff()
+        {
+            Cursor.Current = this.previousCursor;
         }
 
         public void ShowErrorDialog(String msg)

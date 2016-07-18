@@ -9,6 +9,7 @@ using TEEAppModel;
 using Telerik.WinControls;
 using System.Data.Entity;
 using Telerik.WinControls.UI;
+using System.Linq;
 
 namespace TEEApp
 {
@@ -39,6 +40,26 @@ namespace TEEApp
             this.Show();
             this.WindowState = FormWindowState.Normal;
             this.notifyIcon.Visible = false;
+        }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            //TEEAppContext context = new TEEAppContext();
+            //context.ReminderDetails.Load();
+            //Console.WriteLine(context.ReminderDetails.Local.ToBindingList());
+
+            Timer reminderTimer = new Timer();
+            reminderTimer.Interval = 60000; //Note: 1 min interval
+            reminderTimer.Tick += reminderTimer_Tick;
+            reminderTimer.Enabled = true;
+        }
+
+        void reminderTimer_Tick(object sender, EventArgs e)
+        {
+            using (TEEAppContext tempCtx = new TEEAppContext())
+            {
+                tempCtx.ReminderDetails.ToList();
+            }
         }
     }
 }

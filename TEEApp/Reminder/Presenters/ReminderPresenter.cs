@@ -4,28 +4,31 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using TEEApp.Base.Presenters;
-using TEEApp.Reminder.Interface;
+using TEEApp.Reminder.Views;
 using TEEAppModel;
 
 namespace TEEApp.Reminder.Presenters
 {
-    public class ReminderPresenter : Presenter
+    public class ReminderPresenter : Presenter<ReminderView>
     {
-        private readonly IReminderView view;
-
         private TEEAppContext context;
 
-        public ReminderPresenter(IReminderView view)
+        public ReminderPresenter(ReminderView view)
+            :base(view)
         {
             this.view = view;
             this.context = new TEEAppContext();
-            this.view.BindEmployee(this.context.Employees.ToList());
+        }
+
+        protected override void OnInitialise()
+        {
+            
         }
 
         public void AddReminder()
         {
             ReminderDetail rDetails = new ReminderDetail();
-            rDetails.OwnerId = this.view.OwnerId;
+            rDetails.OwnerId = Session.EmployeeId;
             rDetails.ReminderText = this.view.ReminderText;
             rDetails.ReminderTime = this.view.ReminderDate;
 
@@ -33,7 +36,6 @@ namespace TEEApp.Reminder.Presenters
             if (this.SaveChanges(this.context))
             {
                 this.view.ShowInfoDialog("Reminder Successfully Added.", "Reminder");
-                this.view.OwnerId = -1;
                 this.view.ReminderText = String.Empty;
                 this.view.ReminderDate = DateTime.Now;
             }

@@ -31,7 +31,6 @@
             this.components = new System.ComponentModel.Container();
             this.lblReminder = new Telerik.WinControls.UI.RadLabel();
             this.txtReminder = new Telerik.WinControls.UI.RadTextBox();
-            this.ddlEmployee = new Telerik.WinControls.UI.RadDropDownList();
             this.employeeBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.dtpReminderMeOn = new Telerik.WinControls.UI.RadDateTimePicker();
             this.btnAddReminder = new Telerik.WinControls.UI.RadButton();
@@ -39,7 +38,6 @@
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblReminder)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReminder)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlEmployee)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpReminderMeOn)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddReminder)).BeginInit();
@@ -48,7 +46,7 @@
             // 
             // lblReminder
             // 
-            this.lblReminder.Location = new System.Drawing.Point(55, 51);
+            this.lblReminder.Location = new System.Drawing.Point(55, 24);
             this.lblReminder.Name = "lblReminder";
             this.lblReminder.Size = new System.Drawing.Size(68, 19);
             this.lblReminder.TabIndex = 0;
@@ -59,28 +57,14 @@
             // 
             this.txtReminder.AcceptsReturn = true;
             this.txtReminder.AutoSize = false;
-            this.txtReminder.Location = new System.Drawing.Point(55, 76);
+            this.txtReminder.Location = new System.Drawing.Point(55, 49);
             this.txtReminder.Multiline = true;
             this.txtReminder.Name = "txtReminder";
             this.txtReminder.NullText = "Enter Reminder Here";
             this.txtReminder.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.txtReminder.Size = new System.Drawing.Size(414, 243);
+            this.txtReminder.Size = new System.Drawing.Size(414, 269);
             this.txtReminder.TabIndex = 2;
             this.txtReminder.ThemeName = "Office2013Dark";
-            // 
-            // ddlEmployee
-            // 
-            this.ddlEmployee.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
-            this.ddlEmployee.DataSource = this.employeeBindingSource;
-            this.ddlEmployee.DisplayMember = "FullName";
-            this.ddlEmployee.Location = new System.Drawing.Point(55, 26);
-            this.ddlEmployee.Name = "ddlEmployee";
-            this.ddlEmployee.NullText = "Enter Employee Name";
-            this.ddlEmployee.Size = new System.Drawing.Size(170, 21);
-            this.ddlEmployee.TabIndex = 1;
-            this.ddlEmployee.ThemeName = "Office2013Dark";
-            this.ddlEmployee.ValueMember = "Id";
-            this.ddlEmployee.Validating += new System.ComponentModel.CancelEventHandler(this.ddlEmployee_Validating);
             // 
             // employeeBindingSource
             // 
@@ -124,18 +108,16 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSize = true;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.Controls.Add(this.ddlEmployee);
             this.Controls.Add(this.lblRemindMeOn);
             this.Controls.Add(this.btnAddReminder);
             this.Controls.Add(this.dtpReminderMeOn);
             this.Controls.Add(this.txtReminder);
             this.Controls.Add(this.lblReminder);
             this.Name = "ReminderView";
-            this.Size = new System.Drawing.Size(528, 382);
+            this.Size = new System.Drawing.Size(519, 382);
             ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.lblReminder)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.txtReminder)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.ddlEmployee)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.employeeBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dtpReminderMeOn)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.btnAddReminder)).EndInit();
@@ -153,6 +135,5 @@
         private Telerik.WinControls.UI.RadButton btnAddReminder;
         private Telerik.WinControls.UI.RadLabel lblRemindMeOn;
         private System.Windows.Forms.BindingSource employeeBindingSource;
-        private Telerik.WinControls.UI.RadDropDownList ddlEmployee;
     }
 }

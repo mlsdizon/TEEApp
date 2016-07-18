@@ -32,6 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.office2013DarkTheme = new Telerik.WinControls.Themes.Office2013DarkTheme();
             this.notifyIcon = new System.Windows.Forms.NotifyIcon(this.components);
+            this.rdaReminder = new Telerik.WinControls.UI.RadDesktopAlert(this.components);
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             this.SuspendLayout();
             // 
@@ -42,7 +43,6 @@
             this.notifyIcon.BalloonTipTitle = "TEE App";
             this.notifyIcon.Icon = ((System.Drawing.Icon)(resources.GetObject("notifyIcon.Icon")));
             this.notifyIcon.Text = "TEE App";
-            this.notifyIcon.Visible = true;
             this.notifyIcon.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.notifyIcon_MouseDoubleClick);
             // 
             // MainForm
@@ -60,6 +60,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "MainForm";
             this.ThemeName = "Office2013Dark";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.Resize += new System.EventHandler(this.MainForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
             this.ResumeLayout(false);
@@ -70,6 +71,7 @@
 
         private Telerik.WinControls.Themes.Office2013DarkTheme office2013DarkTheme;
         private System.Windows.Forms.NotifyIcon notifyIcon;
+        private Telerik.WinControls.UI.RadDesktopAlert rdaReminder;
 
     }
 }
